@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cửa hàng - 255 Shop</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <i class="ico ico-md" data-icon="phone"></i> 255 Shop
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="shop.html" class="active">Sản phẩm</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+    <div class="header-actions">
+      <button id="btnSearch" title="Tìm kiếm"><i class="ico ico-md" data-icon="search"></i></button>
+      <a href="login.html" title="Tài khoản"><i class="ico ico-md" data-icon="user"></i></a>
+      <button onclick="location.href='cart.html'" title="Giỏ hàng">
+        <i class="ico ico-md" data-icon="cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle"><i class="ico ico-md" data-icon="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<section class="section" style="padding: 36px 0;">
+  <div class="container">
+    <h1 style="font-size:2rem; margin-bottom:4px;">Tất cả sản phẩm</h1>
+    <p style="color: var(--gray-600); margin-bottom:0;">Khám phá bộ sưu tập điện thoại mới nhất</p>
+
+    <div class="shop-layout">
+      <aside class="filter-panel" id="filterPanel">
+        <h3><i class="ico ico-sm" data-icon="filter" style="margin-right:4px;"></i> Bộ lọc</h3>
+
+        <div class="filter-group">
+          <label>Khoảng giá</label>
+          <input type="range" id="priceRange" min="0" max="35000000" step="1000000" value="35000000">
+          <div class="range-values">
+            <span>0d</span>
+            <span id="priceMax">35,000,000d</span>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Thương hiệu</label>
+          <label class="checkbox-item"><input type="checkbox" value="apple" class="brand-filter" checked> Apple</label>
+          <label class="checkbox-item"><input type="checkbox" value="samsung" class="brand-filter" checked> Samsung</label>
+          <label class="checkbox-item"><input type="checkbox" value="xiaomi" class="brand-filter" checked> Xiaomi</label>
+          <label class="checkbox-item"><input type="checkbox" value="oppo" class="brand-filter" checked> OPPO</label>
+          <label class="checkbox-item"><input type="checkbox" value="vivo" class="brand-filter" checked> Vivo</label>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-sm" id="btnResetFilter">Đặt lại bộ lọc</button>
+      </aside>
+
+      <div>
+        <div class="shop-header">
+          <span class="result-count" id="resultCount">Hiển thị 0 sản phẩm</span>
+          <select id="sortSelect">
+            <option value="default">Mặc định</option>
+            <option value="price-asc">Giá: Thấp đến Cao</option>
+            <option value="price-desc">Giá: Cao đến Thấp</option>
+            <option value="rating">Đánh giá cao nhất</option>
+          </select>
+        </div>
+        <button class="btn btn-outline btn-sm filter-toggle" id="btnFilterToggle"><i class="ico ico-sm" data-icon="filter"></i> Bộ lọc</button>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="ico ico-md" data-icon="phone"></i> 255 Shop</h3>
+        <p>Cửa hàng điện thoại uy tín hàng đầu Việt Nam. Cam kết sản phẩm chính hãng 100%.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="shop.html?brand=apple">iPhone</a>
+        <a href="shop.html?brand=samsung">Samsung</a>
+        <a href="shop.html?brand=xiaomi">Xiaomi</a>
+        <a href="shop.html?brand=oppo">OPPO</a>
+        <a href="shop.html?brand=vivo">Vivo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hỗ trợ</h4>
+        <a href="contact.html">Liên hệ</a>
+        <a href="#">Chính sách bảo hành</a>
+        <a href="#">Chính sách đổi trả</a>
+      </div>
+      <div class="footer-col">
+        <h4>Thông tin</h4>
+        <a href="#">Về chúng tôi</a>
+        <a href="#">Tuyển dụng</a>
+        <a href="#">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 255 Shop. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/icons.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  initIcons();
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+    initShared();
+    initShop();
+  });
+</script>
+</body>
+</html>

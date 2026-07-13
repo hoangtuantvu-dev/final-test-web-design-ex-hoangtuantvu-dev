@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập - 255 Shop</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <i class="ico ico-md" data-icon="phone"></i> 255 Shop
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="shop.html">Sản phẩm</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+    <div class="header-actions">
+      <button onclick="location.href='cart.html'" title="Giỏ hàng">
+        <i class="ico ico-md" data-icon="cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle"><i class="ico ico-md" data-icon="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<section class="auth-page">
+  <div class="auth-card" id="loginForm">
+    <h1>Đăng nhập</h1>
+    <p class="auth-subtitle">Chào mừng trở lại! Đăng nhập vào tài khoản của bạn.</p>
+    <form>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="Nhập email của bạn" required>
+      </div>
+      <div class="form-group">
+        <label>Mật khẩu</label>
+        <input type="password" placeholder="Nhập mật khẩu" required>
+      </div>
+      <div class="remember-forgot">
+        <label class="checkbox-item">
+          <input type="checkbox"> Ghi nhớ đăng nhập
+        </label>
+        <a href="#">Quên mật khẩu?</a>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Đăng nhập</button>
+    </form>
+    <div class="auth-footer">
+      Chưa có tài khoản? <a href="#" id="showRegister">Đăng ký ngay</a>
+    </div>
+  </div>
+
+  <div class="auth-card" id="registerForm" style="display:none;">
+    <h1>Đăng ký</h1>
+    <p class="auth-subtitle">Tạo tài khoản mới để bắt đầu mua sắm.</p>
+    <form>
+      <div class="form-group">
+        <label>Họ và tên</label>
+        <input type="text" placeholder="Nhập họ tên của bạn" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="Nhập email của bạn" required>
+      </div>
+      <div class="form-group">
+        <label>Mật khẩu</label>
+        <input type="password" placeholder="Tạo mật khẩu (ít nhất 6 ký tự)" required minlength="6">
+      </div>
+      <div class="form-group">
+        <label>Xác nhận mật khẩu</label>
+        <input type="password" placeholder="Nhập lại mật khẩu" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Đăng ký</button>
+    </form>
+    <div class="auth-footer">
+      Đã có tài khoản? <a href="#" id="showLogin">Đăng nhập</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2025 255 Shop. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/icons.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  initIcons();
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+    initShared();
+  });
+  document.getElementById('showRegister').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('registerForm').style.display = 'block';
+  });
+  document.getElementById('showLogin').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+  });
+  document.querySelectorAll('.auth-card form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('Đăng nhập thành công!', 'success');
+      setTimeout(function() { window.location.href = '../index.html'; }, 1000);
+    });
+  });
+</script>
+</body>
+</html>

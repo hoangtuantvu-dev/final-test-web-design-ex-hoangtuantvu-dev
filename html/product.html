@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết sản phẩm - 255 Shop</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <i class="ico ico-md" data-icon="phone"></i> 255 Shop
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="shop.html">Sản phẩm</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+    <div class="header-actions">
+      <button id="btnSearch" title="Tìm kiếm"><i class="ico ico-md" data-icon="search"></i></button>
+      <a href="login.html" title="Tài khoản"><i class="ico ico-md" data-icon="user"></i></a>
+      <button onclick="location.href='cart.html'" title="Giỏ hàng">
+        <i class="ico ico-md" data-icon="cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle"><i class="ico ico-md" data-icon="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<section class="product-detail">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Trang chủ</a><span>/</span>
+      <a href="shop.html">Sản phẩm</a><span>/</span>
+      <span id="breadcrumbProduct"></span>
+    </div>
+
+    <div class="product-main" id="productMain">
+      <div class="product-gallery">
+        <div class="main-image">
+          <span class="phone-icon"><i class="ico" style="width:128px;height:128px;" data-icon="phone"></i></span>
+        </div>
+        <div class="thumbnails" id="thumbnails"></div>
+      </div>
+
+      <div class="product-info" id="productInfo"></div>
+    </div>
+
+    <div class="product-tabs">
+      <div class="tab-nav">
+        <button class="active" data-tab="specs">Thông số kỹ thuật</button>
+        <button data-tab="desc">Mô tả sản phẩm</button>
+        <button data-tab="reviews">Đánh giá</button>
+      </div>
+      <div class="tab-content active" id="tabSpecs"></div>
+      <div class="tab-content" id="tabDesc"></div>
+      <div class="tab-content" id="tabReviews"></div>
+    </div>
+
+    <div class="related-products">
+      <h2 class="section-title">Sản phẩm liên quan</h2>
+      <p class="section-subtitle">Có thể bạn cũng thích</p>
+      <div class="product-grid" id="relatedProducts"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="ico ico-md" data-icon="phone"></i> 255 Shop</h3>
+        <p>Cửa hàng điện thoại uy tín hàng đầu Việt Nam.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="shop.html?brand=apple">iPhone</a>
+        <a href="shop.html?brand=samsung">Samsung</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hỗ trợ</h4>
+        <a href="contact.html">Liên hệ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Thông tin</h4>
+        <a href="#">Về chúng tôi</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 255 Shop. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/icons.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  initIcons();
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+    initShared();
+    initProductDetail();
+  });
+</script>
+</body>
+</html>

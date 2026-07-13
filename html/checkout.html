@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán - 255 Shop</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <i class="ico ico-md" data-icon="phone"></i> 255 Shop
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="shop.html">Sản phẩm</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" title="Tài khoản"><i class="ico ico-md" data-icon="user"></i></a>
+      <button onclick="location.href='cart.html'" title="Giỏ hàng">
+        <i class="ico ico-md" data-icon="cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle"><i class="ico ico-md" data-icon="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<section class="checkout-page">
+  <div class="container">
+    <h1>Thanh toán</h1>
+    <div class="checkout-steps">
+      <span class="step active"><span class="step-num">1</span> Địa chỉ</span>
+      <span class="step-divider"></span>
+      <span class="step"><span class="step-num">2</span> Thanh toán</span>
+      <span class="step-divider"></span>
+      <span class="step"><span class="step-num">3</span> Xác nhận</span>
+    </div>
+
+    <div class="checkout-layout">
+      <form class="checkout-form" id="checkoutForm">
+        <h2>Thông tin giao hàng</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Họ và tên <span class="required">*</span></label>
+            <input type="text" required placeholder="Nguyễn Văn A">
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại <span class="required">*</span></label>
+            <input type="tel" required placeholder="090 123 4567">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tỉnh/Thành phố <span class="required">*</span></label>
+            <select required>
+              <option value="">Chọn tỉnh/thành phố</option>
+              <option>TP. Hồ Chí Minh</option>
+              <option>Hà Nội</option>
+              <option>Đà Nẵng</option>
+              <option>Hải Phòng</option>
+              <option>Cần Thơ</option>
+              <option>Bình Dương</option>
+              <option>Đồng Nai</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quận/Huyện <span class="required">*</span></label>
+            <select required>
+              <option value="">Chọn quận/huyện</option>
+              <option>Quận 1</option>
+              <option>Quận 2</option>
+              <option>Quận 3</option>
+              <option>Quận Bình Thạnh</option>
+              <option>Quận Gò Vấp</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Địa chỉ chi tiết <span class="required">*</span></label>
+          <input type="text" required placeholder="Số nhà, tên đường, phường/xã">
+        </div>
+        <div class="form-group">
+          <label>Ghi chú đơn hàng</label>
+          <textarea placeholder="Ghi chú về đơn hàng (vd: thời gian giao hàng, yêu cầu đặc biệt...)"></textarea>
+        </div>
+
+        <h2 style="margin-top: 24px;">Phương thức thanh toán</h2>
+        <div class="payment-methods">
+          <label class="payment-method selected">
+            <span class="method-icon"><i class="ico ico-md" data-icon="cash"></i></span>
+            <div>
+              <strong>Thanh toán khi nhận hàng (COD)</strong>
+              <p style="font-size:.85rem;color:var(--gray-600);">Trả tiền mặt khi nhận được sản phẩm</p>
+            </div>
+            <input type="radio" name="payment" value="cod" checked hidden>
+          </label>
+          <label class="payment-method">
+            <span class="method-icon"><i class="ico ico-md" data-icon="credit-card"></i></span>
+            <div>
+              <strong>Thẻ tín dụng / Ghi nợ</strong>
+              <p style="font-size:.85rem;color:var(--gray-600);">Visa, Mastercard, JCB</p>
+            </div>
+            <input type="radio" name="payment" value="card" hidden>
+          </label>
+          <label class="payment-method">
+            <span class="method-icon"><i class="ico ico-md" data-icon="bank"></i></span>
+            <div>
+              <strong>Chuyển khoản ngân hàng</strong>
+              <p style="font-size:.85rem;color:var(--gray-600);">Chuyển khoản qua tài khoản ngân hàng</p>
+            </div>
+            <input type="radio" name="payment" value="bank" hidden>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:28px;">Đặt hàng</button>
+      </form>
+
+      <div class="cart-summary">
+        <h3>Đơn hàng của bạn</h3>
+        <div id="checkoutItems"></div>
+        <div class="summary-row">
+          <span>Tạm tính</span>
+          <span id="subtotal">0d</span>
+        </div>
+        <div class="summary-row">
+          <span>Giảm giá</span>
+          <span id="discount">0d</span>
+        </div>
+        <div class="summary-row">
+          <span>Phí vận chuyển</span>
+          <span style="color:var(--success);">Miễn phí</span>
+        </div>
+        <div class="summary-row total">
+          <span>Tổng cộng</span>
+          <span class="sum-val" id="total">0d</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="ico ico-md" data-icon="phone"></i> 255 Shop</h3>
+        <p>Cửa hàng điện thoại uy tín hàng đầu Việt Nam.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hỗ trợ</h4>
+        <a href="contact.html">Liên hệ</a>
+        <a href="#">Chính sách bảo hành</a>
+      </div>
+      <div class="footer-col">
+        <h4>Thông tin</h4>
+        <a href="#">Về chúng tôi</a>
+        <a href="#">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 255 Shop. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/icons.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  initIcons();
+  document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+    initShared();
+    renderCheckoutItems();
+
+    document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('Đặt hàng thành công! Cảm ơn bạn đã mua sắm.', 'success');
+      setTimeout(function() {
+        clearCart();
+        window.location.href = 'index.html';
+      }, 1500);
+    });
+
+    document.querySelectorAll('.payment-method').forEach(function(el) {
+      el.addEventListener('click', function() {
+        document.querySelectorAll('.payment-method').forEach(function(m) { m.classList.remove('selected'); });
+        this.classList.add('selected');
+        this.querySelector('input').checked = true;
+      });
+    });
+  });
+</script>
+</body>
+</html>
